@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imge slider</title>
+    <style>
+        .nav-arrow{
+            display: inline-block;
+            padding: 5PX;
+            background-color: bisque;
+        }
+        .btn-colour{
+            background-color: blue;
+            color: azure(255, 255, 255)
+            border-radius: 8px;
+        }
+    </style>
+        <script>
+            //vor number1 =10;
+            let count_p = 0;
+            //const number3 =10;
+            const name_p = ["vietnam-1.jpg"];
+            console.log(name_p[count_p]);
+            function forwardPic(){
+                if(count_p< name_p.length-1){
+                    count_p = count_p + 1;
+                }else{
+                    count_p=0;
+                }
+                console.log("count_p = ",count_p);
+                console.log("name_p = ",name_p[count_p]);
+                console.log(name_p.length);
+
+                document.getElementById("slider").src= name_p[count_p];
+            }
+        </script>
+    </sltye>
+</head>
+<body>
+    <div CLASS="nav-arrow">
+    <button class="btn-colour">blackward</button>
+    <button class="btn-color">forward</button>
+    </div>
+    <BR>
+    <img id="slider" src="vietnam-1.jpg"
+</body>
+</html>
+     
