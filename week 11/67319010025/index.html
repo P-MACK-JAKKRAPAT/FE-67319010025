@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #eef2f3;
+            margin: 0;
+        }
+        .calculator {
+            background-color: white;
+            border: 2px solid #007B9A;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 350px;
+            position: relative;
+        }
+        .title {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 5px 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #007B9A;
+            border: 2px solid #007B9A;
+            border-radius: 10px;
+        }
+        .operations {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .operations button {
+            background-color: #82dcff;
+            border: none;
+            color: white;
+            padding: 12px 18px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .operations button:hover {
+            background-color: #b9f6ff;
+        }
+        .result {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #007B9A;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #f1f1f1;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .input-number {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .submit {
+            background-color: #12ffd0;
+            color: rgb(0, 0, 0);
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .submit:hover {
+            background-color: #acb6ff;
+        }
+        .output {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .output h3 {
+            margin: 0;
+            font-weight: normal;
+        }
+        .output span {
+            color: #007B9A;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="title">โปรแกรมคำนวณ</div>
+    <div class="operations">
+        <button onclick="selectOperation('+')">บวก</button>
+        <button onclick="selectOperation('-')">ลบ</button>
+        <button onclick="selectOperation('*')">คูณ</button>
+        <button onclick="selectOperation('/')">หาร</button>
+    </div>
+    <div class="result">
+        <span id="operation">+</span>
+    </div>
+    <input type="number" id="number1" class="input-number" placeholder="กรอกตัวเลขที่ 1">
+    <input type="number" id="number2" class="input-number" placeholder="กรอกตัวเลขที่ 2">
+    <button class="submit" onclick="calculate()">คำนวณ</button>
+    <div class="output">
+        <h3>ผลลัพธ์: <span id="result"></span></h3>
+    </div>
+</div>
+
+<script>
+    let operation = '+';
+
+    function selectOperation(op) {
+        operation = op;
+        document.getElementById('operation').textContent = op;
+    }
+
+    function calculate() {
+        const number1 = parseFloat(document.getElementById('number1').value);
+        const number2 = parseFloat(document.getElementById('number2').value);
+        let result;
+
+        if (isNaN(number1) || isNaN(number2)) {
+            result = 'กรุณากรอกตัวเลขให้ครบถ้วน';
+        } else {
+            switch (operation) {
+                case '+':
+                    result = number1 + number2;
+                    break;
+                case '-':
+                    result = number1 - number2;
+                    break;
+                case '*':
+                    result = number1 * number2;
+                    break;
+                case '/':
+                    result = number1 / number2;
+                    break;
+                default:
+                    result = 'การดำเนินการไม่ถูกต้อง';
+            }
+        }
+
+        document.getElementById('result').textContent = result;
+    }
+</script>
+
+</body>
+</html>
